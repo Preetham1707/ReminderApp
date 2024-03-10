@@ -17,5 +17,8 @@ spec:
           image:  goalsapp.azurecr.io/goals-frontend:latest
           ports:
             - containerPort: 80
+          env:
+            - name: GOALS_BACKEND
+              value: "10.0.243.133" 
 
 

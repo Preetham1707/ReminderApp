@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taskapp-db-deployment
+spec:
+  selector:
+    matchLabels:
+      app: goalsapp-mongodb
+  template:
+    metadata:
+      labels:
+        app: goalsapp-mongodb
+    spec:
+       containers:
+        - name: goalsapp-mongodb
+          image:  goalsapp.azurecr.io/mongo:latest
+          ports:
+            - containerPort: 27017

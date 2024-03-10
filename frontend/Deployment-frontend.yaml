@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taskapp-frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: goals-frontend
+  template:
+    metadata:
+      labels:
+        app: goals-frontend
+    spec:
+      containers:
+        - name: goals-frontend
+          image:  goalsapp.azurecr.io/goals-frontend:latest
+          ports:
+            - containerPort: 80
+
+

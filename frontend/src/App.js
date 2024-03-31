@@ -14,7 +14,7 @@ function App() {
       setIsLoading(true);
 
       try {
-        const response = await fetch(`http://${process.env.GOALS_BACKEND}/goals`);
+        const response = await fetch(`http://${process.env.BACKEND_SERVICE_NAME}:${process.env.BACKEND_SERVICE_PORT}/goals`);
         //const response = await fetch('http://localhost:3001/goals');
         //const response = await fetch('http://goals-backend/goals');
 
@@ -41,7 +41,7 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`http://${process.env.GOALS_BACKEND}/goals`, {
+      const response = await fetch(`http://${process.env.BACKEND_SERVICE_NAME}:${process.env.BACKEND_SERVICE_PORT}/goals`, {
       //const response = await fetch('http://localhost:3001/goals', {
       //const response = await fetch('http://goals-backend/goals', {
         method: 'POST',
@@ -82,7 +82,7 @@ function App() {
     setIsLoading(true);
 
     try {
-       const response = await fetch(`http://${process.env.GOALS_BACKEND}/goals` + goalId, {
+       const response = await fetch(`http://${process.env.BACKEND_SERVICE_NAME}:${process.env.BACKEND_SERVICE_PORT}/goals` + goalId, {
       //const response = await fetch('http://localhost:3001/goals/' + goalId, {
       // const response = await fetch('http://goals-backend/goals/' + goalId, {
         method: 'DELETE',

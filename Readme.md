@@ -73,4 +73,23 @@ The Next step would be is to push the docker images to the container registry, s
 
 # Connecting Kubernetes (Minikube ) with AZ ACR to use the Images stored for Deployment.
 
+*  Create a Azure Service Principal for authorizing the Kubernetes cluster to pull the Images from the Azure    container Registry.
 
+    Note down the Client ID and the tenant ID for future purposes.
+
+*  Navigate to the certificates and secrets Pane to generate a secret , to be used in the Kubernetes secret Object provide details such as description and select the expiry duration of the secret.
+
+    Note down the Secret ID and Secret Value.
+
+* Assign Required Role to the Service Principal:
+
+    Navigate to your Azure Container Registry resource. Go to "Access control (IAM)" or "Access control (IAM Preview)".Click on "Add role assignment".Assign the "AcrPull" role to the service principal. This role grants pull access to images in the container registry.If you need additional permissions, you can assign other roles like "AcrPush" or "AcrImageSigner".
+
+
+    To create a secret with necessary permission to pull the Images , a secret needs to be created with the following details:
+
+        kubectl create secret docker-registry <secret-name> \
+            --namespace <namespace> \
+            --docker-server=<container-registry-name>.azurecr.io \
+            --docker-username=<service-principal-ID> \
+            --docker-password=<service-principal-password>

@@ -11,8 +11,9 @@ spec:
       labels:
         app: goalsapp-mongodb
     spec:
-       containers:
-        - name: goalsapp-mongodb
-          image:  goalsapp.azurecr.io/mongo:latest
-          ports:
-            - containerPort: 27017
+      containers:
+      - name: goalsapp-mongodb
+        image: goalsapp.azurecr.io/mongo:latest
+        ports:
+        - containerPort: 27017
+

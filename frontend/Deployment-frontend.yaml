@@ -13,12 +13,20 @@ spec:
         app: goals-frontend
     spec:
       containers:
-        - name: goals-frontend
-          image:  goalsapp.azurecr.io/goals-frontend:latest
-          ports:
-            - containerPort: 80
-          env:
-            - name: GOALS_BACKEND
-              value: "10.0.243.133" 
-
-
+      - name: goals-frontend
+        image: goalsapp.azurecr.io/goals-frontend:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: BACKEND_SERVICE_NAME
+          value: service-backend
+        - name: BACKEND_SERVICE_PORT
+          value: "80"
+        volumeMounts:
+        - name: nginx-config-volume
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+      volumes:
+      - name: nginx-config-volume
+        configMap:
+          name: nginx-config

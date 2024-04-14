@@ -19,9 +19,9 @@ spec:
         - containerPort: 80
         env:
         - name: BACKEND_SERVICE_NAME
-          value: service-backend
+          value: service-backend # Provide the service-backend name as the value
         - name: BACKEND_SERVICE_PORT
-          value: "80"
+          value: "3000"
         volumeMounts:
         - name: nginx-config-volume
           mountPath: /etc/nginx/nginx.conf

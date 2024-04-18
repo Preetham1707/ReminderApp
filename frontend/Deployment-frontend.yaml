@@ -18,7 +18,7 @@ spec:
         ports:
         - containerPort: 80
         env:
-        - name: BACKEND_SERVICE_NAME
+        - name: backend-service-name
           value: service-backend # Provide the service-backend name as the value
         - name: BACKEND_SERVICE_PORT
           value: "3000"
